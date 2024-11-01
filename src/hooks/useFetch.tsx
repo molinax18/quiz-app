@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
 
-const apiKey = import.meta.env.VITE_API_KEY
-const host = 'trivia-questions-api.p.rapidapi.com'
-
 type FetchState<T> =  {
   state: 'idle' | 'loading' | 'error' | 'success'
   data: null | T
@@ -24,14 +21,7 @@ const useFetch = <T,>(url: string) => {
           state: 'loading'
         }))
         
-        const res = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'content-type': 'application/json',
-            'x-rapidapi-key': apiKey,
-            'x-rapidapi-host': host
-          }
-        })
+        const res = await fetch(url)
 
         if(!res.ok) {
           setFetchState(prev => ({
