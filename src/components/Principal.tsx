@@ -20,8 +20,8 @@ const Principal = ({ setCategoryId }: Props) => {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const form = e.currentTarget
 
+    const form = e.currentTarget
     const select = form.querySelector('select[name="select"]') as HTMLSelectElement
     setCategoryId(parseInt(select.value))
   }
